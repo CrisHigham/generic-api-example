@@ -108,12 +108,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CrisHigham/generic-api.git",
-                "reference": "f64314c9b1dc21ca08c287440ed2d5fb2005eeda"
+                "reference": "cdb6e27c1376cf895c6059c82db60bb89887d180"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CrisHigham/generic-api/zipball/f64314c9b1dc21ca08c287440ed2d5fb2005eeda",
-                "reference": "f64314c9b1dc21ca08c287440ed2d5fb2005eeda",
+                "url": "https://api.github.com/repos/CrisHigham/generic-api/zipball/cdb6e27c1376cf895c6059c82db60bb89887d180",
+                "reference": "cdb6e27c1376cf895c6059c82db60bb89887d180",
                 "shasum": ""
             },
             "require": {
@@ -143,9 +143,9 @@
             "description": "Creates an api, just add orm objects",
             "support": {
                 "issues": "https://github.com/CrisHigham/generic-api/issues",
-                "source": "https://github.com/CrisHigham/generic-api/tree/main"
+                "source": "https://github.com/CrisHigham/generic-api/tree/staging"
             },
-            "time": "2024-08-20T16:43:36+00:00"
+            "time": "2025-04-03T09:37:13+00:00"
         },
         {
             "name": "nowakowskir/php-jwt",
