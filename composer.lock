@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bfdc2e0ae3ca679926d4c7034860d021",
+    "content-hash": "112fcded2521e80f7e01707f7e17b2e6",
     "packages": [
         {
             "name": "cesargb/php-log-rotation",
@@ -1141,6 +1141,51 @@
                 "source": "https://github.com/tina4stack/tina4php-shape/tree/v2.0.2"
             },
             "time": "2021-07-21T10:35:18+00:00"
+        },
+        {
+            "name": "tina4stack/tina4php-sqlite3",
+            "version": "v2.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tina4stack/tina4php-sqlite3.git",
+                "reference": "376f3ee02c4fde18391b5906b4a3b3ffb2edf6e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tina4stack/tina4php-sqlite3/zipball/376f3ee02c4fde18391b5906b4a3b3ffb2edf6e8",
+                "reference": "376f3ee02c4fde18391b5906b4a3b3ffb2edf6e8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-sqlite3": "*",
+                "tina4stack/tina4php-database": "^2.0"
+            },
+            "require-dev": {
+                "overtrue/phplint": "^2.0",
+                "phpunit/phpunit": "^9",
+                "roave/security-advisories": "dev-latest"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tina4\\": [
+                        "Tina4/"
+                    ]
+                },
+                "classmap": [
+                    "Tina4/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Tina4 PHP Sqlite3 Database Driver",
+            "support": {
+                "issues": "https://github.com/tina4stack/tina4php-sqlite3/issues",
+                "source": "https://github.com/tina4stack/tina4php-sqlite3/tree/v2.0.5"
+            },
+            "time": "2025-03-07T08:34:16+00:00"
         },
         {
             "name": "twig/twig",
