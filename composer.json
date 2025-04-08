@@ -1,8 +1,10 @@
 {
+    "name": "justblink/generic-api-example",
+    "description": "Creates an api for testing Generic-Api",
+    "license": "MIT",
     "require": {
-        "tina4stack/tina4php": "^2.0",
-        "tina4stack/tina4php-sqlite3": "^2.0",
-        "justblink/generic-api": "dev-staging"
+        "justblink/generic-api": "dev-staging",
+        "tina4stack/tina4php-sqlite3": "^2.0"
     },
     "scripts": {
         "tina4": "tina4",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "112fcded2521e80f7e01707f7e17b2e6",
+    "content-hash": "0338c369425b0d3484faf5ead5f6d430",
     "packages": [
         {
             "name": "cesargb/php-log-rotation",
@@ -108,12 +108,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CrisHigham/generic-api.git",
-                "reference": "cdb6e27c1376cf895c6059c82db60bb89887d180"
+                "reference": "e3b47e86c86a1bacb1a8f64bb3afba18db557768"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CrisHigham/generic-api/zipball/cdb6e27c1376cf895c6059c82db60bb89887d180",
-                "reference": "cdb6e27c1376cf895c6059c82db60bb89887d180",
+                "url": "https://api.github.com/repos/CrisHigham/generic-api/zipball/e3b47e86c86a1bacb1a8f64bb3afba18db557768",
+                "reference": "e3b47e86c86a1bacb1a8f64bb3afba18db557768",
                 "shasum": ""
             },
             "require": {
@@ -145,7 +145,7 @@
                 "issues": "https://github.com/CrisHigham/generic-api/issues",
                 "source": "https://github.com/CrisHigham/generic-api/tree/staging"
             },
-            "time": "2025-04-03T09:37:13+00:00"
+            "time": "2025-04-08T09:14:28+00:00"
         },
         {
             "name": "nowakowskir/php-jwt",
