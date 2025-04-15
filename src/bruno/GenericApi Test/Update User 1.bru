@@ -1,0 +1,41 @@
+meta {
+  name: Update User 1
+  type: http
+  seq: 13
+}
+
+patch {
+  url: {{secure}}{{server}}{{base}}/test-user/{{userId1}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "email":"spiderman@gmail.com",
+      "cellphone":"0123456789"
+  }
+}
+
+tests {
+  let testCode = 200;
+  const responseJson = res.getBody();
+  
+  test("Get User 1", function(){
+      expect(res.getStatus()).to.equal(testCode)
+  //     pm.response.to.be.json;
+      expect(responseJson.email).to.eql("spiderman@gmail.com");
+      expect(responseJson.cellphone).to.eql("0123456789");
+  })
+  
+  if (res.getStatus() != testCode){
+      console.log(responseJson);
+      bru.runner.stopExecution();
+  } else {
+      console.log("User updated");
+  }
+}

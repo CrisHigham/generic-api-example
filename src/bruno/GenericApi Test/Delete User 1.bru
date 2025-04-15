@@ -1,0 +1,34 @@
+meta {
+  name: Delete User 1
+  type: http
+  seq: 14
+}
+
+delete {
+  url: {{secure}}{{server}}{{base}}/test-user/{{userId1}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+tests {
+  let testCode = 200;
+  const responseJson = res.getBody();
+  
+  test("Delete User 1", function(){
+      expect(res.getStatus()).to.equal(testCode)
+  //     pm.response.to.be.json;
+  })
+  
+  console.log(responseJson);
+  
+  if (res.getStatus() != testCode){
+      console.log(responseJson);
+      bru.runner.stopExecution();
+  } else {
+      console.log("User 1 deleted");
+  }
+}

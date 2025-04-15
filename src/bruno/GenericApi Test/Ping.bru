@@ -1,0 +1,32 @@
+meta {
+  name: Ping
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{secure}}{{server}}{{base}}/ping
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+tests {
+  let testCode = 200;
+  const responseJson = res.getBody();
+  
+  test("Test Api Ping", function(){
+      expect(res.getStatus()).to.equal(testCode)
+  //     pm.response.to.be.json;
+  })
+  
+  if (res.getStatus() != testCode){
+      console.log(responseJson);
+      bru.runner.stopExecution();
+  } else {
+      console.log("version: " + responseJson.version);
+  }
+}

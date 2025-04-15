@@ -1,0 +1,40 @@
+meta {
+  name: Create User 1
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{secure}}{{server}}{{base}}/test-user
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "firstName":"Peter",
+      "lastName":"Parker"
+  }
+}
+
+tests {
+  let testCode = 200;
+  const responseJson = res.getBody();
+  
+  test("Create User 1", function(){
+      expect(res.getStatus()).to.equal(testCode)
+  //     pm.response.to.be.json;
+  })
+  
+  if (res.getStatus() != testCode){
+      console.log(responseJson);
+      bru.runner.stopExecution();
+  } else {
+      bru.setEnvVar("userId1", responseJson.id);
+      console.log("userId 1 is set to: " + bru.getEnvVar("userId1"));
+  }
+}

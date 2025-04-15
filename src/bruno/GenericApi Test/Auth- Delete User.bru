@@ -1,0 +1,23 @@
+meta {
+  name: Auth: Delete User
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{secure}}{{server}}{{base}}/test-user/{{userId1}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: 
+}
+
+tests {
+  let testCode = 403;
+  
+  test("Auth Ping", function(){
+      expect(res.getStatus()).to.equal(testCode)
+  })
+}

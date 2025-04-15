@@ -1,0 +1,35 @@
+meta {
+  name: Get User 1
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{secure}}{{server}}{{base}}/test-user/{{userId1}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+tests {
+  let testCode = 200;
+  const responseJson = res.getBody();
+  
+  test("Get User 1", function(){
+      expect(res.getStatus()).to.equal(testCode)
+  //     pm.response.to.be.json;
+      expect(responseJson.id).to.eql(parseInt(bru.getEnvVar("userId1")));
+      expect(responseJson.firstName).to.eql("Peter");
+      expect(responseJson.lastName).to.eql("Parker");
+  })
+  
+  if (res.getStatus() != testCode){
+      console.log(responseJson);
+      bru.runner.stopExecution();
+  } else {
+      console.log("User id: " + responseJson.id);
+  }
+}
