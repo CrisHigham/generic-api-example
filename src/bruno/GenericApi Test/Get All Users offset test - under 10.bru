@@ -1,17 +1,18 @@
 meta {
-  name: Get All Users
+  name: Get All Users offset test - under 10
   type: http
-  seq: 16
+  seq: 14
 }
 
 get {
-  url: {{secure}}{{server}}{{base}}/test-user?limit=100
+  url: {{secure}}{{server}}{{base}}/test-user?limit=1&offset=6
   body: json
   auth: bearer
 }
 
 params:query {
-  limit: 100
+  limit: 1
+  offset: 6
 }
 
 auth:bearer {
@@ -22,11 +23,11 @@ tests {
   let testCode = 200;
   const responseJson = res.getBody();
   
-  test("Get All Users", function(){
+  test("Get All Users - offset", function(){
       expect(res.getStatus()).to.equal(testCode)
-  //     pm.response.to.be.json;
       expect(Array.isArray(responseJson)).to.be.true;
-      expect(responseJson.length).to.eql(22);
+      expect(responseJson.length).to.eql(1);
+      expect(responseJson[0].id).to.eql(7);
   })
   
   if (res.getStatus() != testCode){
