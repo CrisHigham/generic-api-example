@@ -24,14 +24,14 @@ tests {
   
   test("Get All Users - Limit", function(){
       expect(res.getStatus()).to.equal(testCode)
-      expect(Array.isArray(responseJson)).to.be.true;
-      expect(responseJson.length).to.eql(5);
+      expect(responseJson.noOfRecords).to.eql(5);
+  
   })
   
   if (res.getStatus() != testCode){
       console.log(responseJson);
       bru.runner.stopExecution();
   } else {
-      console.log("No of records: " + responseJson.length);
+      console.log("No of records: " + responseJson.noOfRecords);
   }
 }

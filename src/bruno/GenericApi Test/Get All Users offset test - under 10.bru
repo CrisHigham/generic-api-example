@@ -25,15 +25,15 @@ tests {
   
   test("Get All Users - offset", function(){
       expect(res.getStatus()).to.equal(testCode)
-      expect(Array.isArray(responseJson)).to.be.true;
-      expect(responseJson.length).to.eql(1);
-      expect(responseJson[0].id).to.eql(7);
+      expect(responseJson.noOfRecords).to.eql(1);
+      expect(responseJson.offset).to.eql(6)
+      expect(responseJson.data[0].id).to.eql(7);
   })
   
   if (res.getStatus() != testCode){
       console.log(responseJson);
       bru.runner.stopExecution();
   } else {
-      console.log("No of records: " + responseJson.length);
+      console.log("No of records: " + responseJson.noOfRecords);
   }
 }

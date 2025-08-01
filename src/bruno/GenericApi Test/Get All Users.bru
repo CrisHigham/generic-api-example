@@ -24,15 +24,13 @@ tests {
   
   test("Get All Users", function(){
       expect(res.getStatus()).to.equal(testCode)
-  //     pm.response.to.be.json;
-      expect(Array.isArray(responseJson)).to.be.true;
-      expect(responseJson.length).to.eql(22);
+      expect(responseJson.noOfRecords).to.eql(22);
   })
   
   if (res.getStatus() != testCode){
       console.log(responseJson);
       bru.runner.stopExecution();
   } else {
-      console.log("No of records: " + responseJson.length);
+      console.log("No of records: " + responseJson.noOfRecords);
   }
 }
