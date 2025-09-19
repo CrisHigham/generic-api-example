@@ -1,0 +1,39 @@
+meta {
+  name: Get All Users offset test - over 10
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{secure}}{{server}}{{base}}/test-user?limit=1&offset=12
+  body: json
+  auth: bearer
+}
+
+params:query {
+  limit: 1
+  offset: 12
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+tests {
+  let testCode = 200;
+  const responseJson = res.getBody();
+  
+  test("Get All Users - offset over 10", function(){
+      expect(res.getStatus()).to.equal(testCode);
+      expect(responseJson.noOfRecords).to.eql(1);
+      expect(responseJson.offset).to.eql(12);
+      expect(responseJson.data[0].id).to.eql(13);
+  })
+  
+  if (res.getStatus() != testCode){
+      console.log(responseJson);
+      bru.runner.stopExecution();
+  } else {
+      console.log("No of records: " + responseJson.noOfRecords);
+  }
+}

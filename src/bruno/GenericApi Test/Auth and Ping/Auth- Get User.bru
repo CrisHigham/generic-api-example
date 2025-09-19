@@ -1,0 +1,23 @@
+meta {
+  name: Auth: Get User
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{secure}}{{server}}{{base}}/test-user/{{userId1}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: 
+}
+
+tests {
+  let testCode = 403;
+  
+  test("Auth Get User", function(){
+      expect(res.getStatus()).to.equal(testCode)
+  })
+}

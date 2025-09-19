@@ -1,0 +1,30 @@
+meta {
+  name: Auth: Replace User Batch
+  type: http
+  seq: 8
+}
+
+put {
+  url: {{secure}}{{server}}{{base}}/test-user
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: 
+}
+
+body:json {
+  {
+      "email":"spiderman@gmail.com",
+      "cellphone":"0123456789"
+  }
+}
+
+tests {
+  let testCode = 403;
+  
+  test("Auth Replace User Batch", function(){
+      expect(res.getStatus()).to.equal(testCode)
+  })
+}

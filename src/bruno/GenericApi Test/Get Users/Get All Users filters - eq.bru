@@ -1,0 +1,35 @@
+meta {
+  name: Get All Users filters - eq
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{secure}}{{server}}{{base}}/test-user?limit=100&id=eq:1
+  body: json
+  auth: bearer
+}
+
+params:query {
+  limit: 100
+  id: eq:1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+tests {
+  let testCode = 200;
+  const responseJson = res.getBody();
+  
+  test("Get All Users - filters - eq", function(){
+      expect(res.getStatus()).to.equal(testCode)
+      expect(responseJson.data[0].firstName).to.eql("Clark");
+  })
+  
+  if (res.getStatus() != testCode){
+      console.log(responseJson);
+      bru.runner.stopExecution();
+  }
+}
