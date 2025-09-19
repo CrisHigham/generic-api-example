@@ -1,0 +1,35 @@
+meta {
+  name: Get All Users filters - eq filemap
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{secure}}{{server}}{{base}}/test-user?limit=100&firstName=eq:Clark
+  body: json
+  auth: bearer
+}
+
+params:query {
+  limit: 100
+  firstName: eq:Clark
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+tests {
+  let testCode = 200;
+  const responseJson = res.getBody();
+  
+  test("Get All Users - filters - eq filemap", function(){
+      expect(res.getStatus()).to.equal(testCode)
+      expect(responseJson.data[0].firstName).to.eql("Clark");
+  })
+  
+  if (res.getStatus() != testCode){
+      console.log(responseJson);
+      bru.runner.stopExecution();
+  }
+}

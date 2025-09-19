@@ -1,0 +1,37 @@
+meta {
+  name: Get All Users limit test - exact over 10
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{secure}}{{server}}{{base}}/test-user?limit=16
+  body: json
+  auth: bearer
+}
+
+params:query {
+  limit: 16
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+tests {
+  let testCode = 200;
+  const responseJson = res.getBody();
+  
+  test("Get All Users - Limit over 10", function(){
+      expect(res.getStatus()).to.equal(testCode)
+      expect(responseJson.noOfRecords).to.eql(16);
+      expect(responseJson.limit).to.eql(16);
+  })
+  
+  if (res.getStatus() != testCode){
+      console.log(responseJson);
+      bru.runner.stopExecution();
+  } else {
+      console.log("No of records: " + responseJson.noOfRecords);
+  }
+}

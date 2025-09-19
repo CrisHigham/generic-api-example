@@ -1,0 +1,23 @@
+meta {
+  name: Auth: Delete User Batch
+  type: http
+  seq: 10
+}
+
+delete {
+  url: {{secure}}{{server}}{{base}}/test-user
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: 
+}
+
+tests {
+  let testCode = 403;
+  
+  test("Auth Delete User Batch", function(){
+      expect(res.getStatus()).to.equal(testCode)
+  })
+}

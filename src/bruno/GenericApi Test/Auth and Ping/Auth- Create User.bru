@@ -1,0 +1,30 @@
+meta {
+  name: Auth: Create User
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{secure}}{{server}}{{base}}/test-user
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: 
+}
+
+body:json {
+  {
+      "firstName":"Peter",
+      "lastName":"Parker"
+  }
+}
+
+tests {
+  let testCode = 403;
+  
+  test("Auth Create User", function(){
+      expect(res.getStatus()).to.equal(testCode)
+  })
+}
