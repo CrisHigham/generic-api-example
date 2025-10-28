@@ -1,18 +1,18 @@
 meta {
   name: Get All Users filters - eq no filemap
   type: http
-  seq: 8
+  seq: 9
 }
 
 get {
-  url: {{secure}}{{server}}{{base}}/test-user?limit=100&lastName=eq:Kent
+  url: {{secure}}{{server}}{{base}}/test-user?limit=100&lastName=eq:Wayne
   body: json
   auth: bearer
 }
 
 params:query {
   limit: 100
-  lastName: eq:Kent
+  lastName: eq:Wayne
 }
 
 auth:bearer {
@@ -25,7 +25,7 @@ tests {
   
   test("Get All Users - filters - eq no filemap", function(){
       expect(res.getStatus()).to.equal(testCode)
-      expect(responseJson.data[0].firstName).to.eql("Clark");
+      expect(responseJson.data[0].lastName).to.eql("Wayne");
   })
   
   if (res.getStatus() != testCode){

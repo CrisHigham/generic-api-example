@@ -1,17 +1,13 @@
 meta {
-  name: Get All Users limit test - exact over 10
+  name: Get All Users - no parameters
   type: http
-  seq: 25
+  seq: 6
 }
 
 get {
-  url: {{secure}}{{server}}{{base}}/test-user?limit=16
+  url: {{secure}}{{server}}{{base}}/test-user
   body: json
   auth: bearer
-}
-
-params:query {
-  limit: 16
 }
 
 auth:bearer {
@@ -22,10 +18,11 @@ tests {
   let testCode = 200;
   const responseJson = res.getBody();
   
-  test("Get All Users - Limit over 10", function(){
+  test("Get All Users", function(){
       expect(res.getStatus()).to.equal(testCode)
-      expect(Array.isArray(responseJson)).to.be.true;
-      expect(responseJson.length).to.eql(16);
+  //     pm.response.to.be.json;
+      expect(responseJson).is.json;
+      expect(responseJson.data.length).to.eql(10);
   })
   
   if (res.getStatus() != testCode){
