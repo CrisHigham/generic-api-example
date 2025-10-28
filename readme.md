@@ -27,7 +27,7 @@ Using a standard Bearer token as written in the .env file will supply access to 
 
 ## Testing
 
-Import the postman collection into Postman. It will work out the box if using the sample.env settings. Alternatively seupt the pre-request script for the collection. Running the collection goes through a set of requests designed to test generic-api and any failure should be cause for alarm.
+Testing is now a Bruno collection kept in this repository. It will work out the box if using the sample.env settings. One needs to add the token to the Bruno environment. Running the collection goes through a set of requests designed to test generic-api and any failure should be cause for alarm.
 
 Presuming there are no errors the collection is self cleaning and will leave no data in the database. Should an error occur there will most likely be data to clean up before the next collection run. This is intentional to allow inspection of the database on error. There is no automatic database cleanup route.
 

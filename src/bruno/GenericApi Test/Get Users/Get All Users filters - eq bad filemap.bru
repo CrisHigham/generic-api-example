@@ -1,17 +1,17 @@
 meta {
-  name: Get All Users
+  name: Get All Users filters - eq bad filemap
   type: http
-  seq: 16
+  seq: 10
 }
 
 get {
-  url: {{secure}}{{server}}{{base}}/test-user?limit=100
+  url: {{secure}}{{server}}{{base}}/test-user?badFileMap=eq:Wayne
   body: json
   auth: bearer
 }
 
 params:query {
-  limit: 100
+  badFileMap: eq:Wayne
 }
 
 auth:bearer {
@@ -22,17 +22,14 @@ tests {
   let testCode = 200;
   const responseJson = res.getBody();
   
-  test("Get All Users", function(){
+  test("Get All Users - filters - eq bad filemap", function(){
       expect(res.getStatus()).to.equal(testCode)
-  //     pm.response.to.be.json;
-      expect(Array.isArray(responseJson)).to.be.true;
-      expect(responseJson.length).to.eql(22);
+      // bad parameter ignored and default records returned
+      expect(responseJson.noOfRecords).to.eql(10);
   })
   
   if (res.getStatus() != testCode){
       console.log(responseJson);
       bru.runner.stopExecution();
-  } else {
-      console.log("No of records: " + responseJson.length);
   }
 }

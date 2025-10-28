@@ -1,7 +1,7 @@
 meta {
   name: Get All Users
   type: http
-  seq: 5
+  seq: 1
 }
 
 get {
@@ -24,13 +24,15 @@ tests {
   
   test("Get All Users", function(){
       expect(res.getStatus()).to.equal(testCode)
-      expect(responseJson.noOfRecords).to.eql(20);
+  //     pm.response.to.be.json;
+      expect(responseJson).is.json;
+      expect(responseJson.data.length).to.eql(20);
   })
   
   if (res.getStatus() != testCode){
       console.log(responseJson);
       bru.runner.stopExecution();
   } else {
-      console.log("No of records: " + responseJson.noOfRecords);
+      console.log("No of records: " + responseJson.length);
   }
 }
